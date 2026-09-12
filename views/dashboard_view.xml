@@ -1,17 +1,4 @@
 <odoo>
-    <record id="view_bloom_dashboard_tree" model="ir.ui.view">
-        <field name="name">bloom.dashboard.tree</field>
-        <field name="model">bloom.dashboard</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="total_patients"/>
-                <field name="total_appointments"/>
-                <field name="total_laser_sessions"/>
-                <field name="total_slimming_sessions"/>
-            </tree>
-        </field>
-    </record>
-
     <record id="view_bloom_dashboard_form" model="ir.ui.view">
         <field name="name">bloom.dashboard.form</field>
         <field name="model">bloom.dashboard</field>
@@ -29,10 +16,18 @@
         </field>
     </record>
 
+    <record id="bloom_dashboard_main" model="bloom.dashboard">
+        <field name="total_patients">0</field>
+        <field name="total_appointments">0</field>
+        <field name="total_laser_sessions">0</field>
+        <field name="total_slimming_sessions">0</field>
+    </record>
+
     <record id="action_bloom_dashboard" model="ir.actions.act_window">
         <field name="name">Dashboard</field>
         <field name="res_model">bloom.dashboard</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">form</field>
+        <field name="res_id" ref="bloom_dashboard_main"/>
     </record>
 
     <menuitem id="menu_bloom_dashboard" name="Dashboard" parent="menu_bloom_root" action="action_bloom_dashboard"/>
